@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Siri	xmlns="http://www.siri.org.uk/siri" 
+		xmlns:ns2="http://www.ifopt.org.uk/acsb" 
+		xmlns:ns3="http://www.ifopt.org.uk/ifopt" 
+		xmlns:ns4="http://datex2.eu/schema/2_0RC1/2_0" 
+		xmlns:gml="http://www.opengis.net/gml/3.2"
+		version="2.1">
+	<ServiceDelivery>
+		<!--
+		Time when the dataset was generated/published.
+		-->
+		<ResponseTimestamp>2025-11-24T10:00:00+02:00</ResponseTimestamp>
+		
+		<!--	https://enturas.atlassian.net/wiki/spaces/PUBLIC/pages/637370373/General+information+SIRI#GeneralinformationSIRI-ServiceDelivery
+		
+		PTA or PTO code space code.
+		-->
+		<ProducerRef>ATB</ProducerRef>
+		<EstimatedTimetableDelivery version="2.1">
+			<ResponseTimestamp>2025-11-24T10:00:00+02:00</ResponseTimestamp>
+			<EstimatedJourneyVersionFrame>
+				<RecordedAtTime>2025-11-24T10:00:00+02:00</RecordedAtTime>
+				<EstimatedVehicleJourney>
+					<RecordedAtTime>2025-11-24T10:00:00+02:00</RecordedAtTime>
+					<!-- 
+					
+					LineRef is mandatory, is of type LineRefStructure that is content
+					of LineRefCodeType (xsd:NMTOKEN) 
+					
+					For PoC the value is not validated other than that it's present.
+					-->
+					<LineRef>ATB:Line:49cdfa6f-d636-47e3-9d96-8413f6c37f54</LineRef>
+					
+					<!-- 
+					DirectionRef is optional (min occurs = 0) content is 
+					DirectionCodeType (xsd:NMTOKEN)  
+					--> 
+					<DirectionRef>0</DirectionRef>
+					
+					<!-- 
+					This is a stable permanent Id for the trip. Later used to add stops
+					or communicate delays.
+					-->	<EstimatedVehicleJourneyCode>ATB:ServiceJourney:f15dd9fe-eee2-4127-a5b2-d4482abd539a</EstimatedVehicleJourneyCode>
+					
+					<!-- 
+					Set to true for the first message to signal that this is a new journey, subsequent updates sets it to false.
+					-->
+					<ExtraJourney>false</ExtraJourney>
+					
+					<!-- 
+					Mode car will be added later.
+					For the PoC we use bus as it's most compatible value.
+					-->
+					<VehicleMode>bus</VehicleMode>
+					
+					<!-- Route ref is optional -->
+					<RouteRef>ATB:Route:4d972556-4359-47b9-945e-7d43b4141f48</RouteRef>
+					
+					<!-- PublishedLineName is optional -->
+					<PublishedLineName>Carpooling lifecycle example</PublishedLineName>
+					
+					<!-- 
+					GroupOfLinesRef will be removed. It's not in use but mandatory
+					in the schema.
+					-->
+					<GroupOfLinesRef>ATB:Network:bd00dee0-7288-428e-aa4f-5150125eb16b</GroupOfLinesRef>
+					
+					<!-- ExternalLineRef will be removed. -->
+					<ExternalLineRef>ATB:Line:49cdfa6f-d636-47e3-9d96-8413f6c37f54</ExternalLineRef>
+					
+					<!--
+					OperatorRef identifies the company providing the service for the PTA,
+					the PTO. In the case of AtB this will be TRIPS.
+					-->
+					<OperatorRef>INN:Operator:53</OperatorRef>
+					
+					
+					<Monitored>true</Monitored>
+					<DataSource>ATB</DataSource>
+					<EstimatedCalls>
+						<EstimatedCall>
+							<!-- 
+							StopPointRef, mandatory [for PoC we'll refer to a 
+							StopPoint that doesn't exist in NSR or anywhere else]
+							-->
+							<StopPointRef>NSR:Quay:26111</StopPointRef>
+							
+							<!-- Order, optional -->
+							<Order>1</Order>
+							
+							<!-- StopPointName, optional. -->
+							<StopPointName>Drivers home</StopPointName>
+							
+							<!-- CallPropertyGroup -->
+							<DestinationDisplay>Drivers work place</DestinationDisplay>
+							
+							<!-- OnwardsCallGroup, MonitoredStopDepartureStatusGroup -->
+							<DepartureStopAssignment>
+								<ExpectedFlexibleArea>
+									<gml:Polygon gml:id="drivers_home" gml:srsName="EPSG:4326">
+										<gml:exterior>
+											<gml:LinearRing>
+												<gml:posList>
+													10.813701152801514 59.90490269568961
+													10.813824534416199 59.905002222436366
+													10.818298459053041 59.90387782183805
+													10.818470120429994 59.90393162177695
+													10.81859886646271 59.903902031821346
+													10.818480849266054 59.903821331808345
+													10.818260908126833 59.903805191782205
+													10.813701152801514 59.90490269568961
+												</gml:posList>
+											</gml:LinearRing>
+										</gml:exterior>
+									</gml:Polygon>
+								</ExpectedFlexibleArea>
+							</DepartureStopAssignment>
+							
+							<AimedDepartureTime>2025-11-25T07:00:00+02:00</AimedDepartureTime>
+							<ExpectedDepartureTime>2025-11-25T07:00:00+02:00</ExpectedDepartureTime>
+							<DepartureBoardingActivity>boarding</DepartureBoardingActivity>
+							
+							<!--
+							The trip starts, the drivers car is a normal 5 seat car, but the driver has only made 4 seats available to avoid what the driver considers to be the uncomfortable middle seat in the back.
+							
+							One seat is taken by the driver, then there's three seats left in the car.
+							-->
+							<ExpectedDepartureCapacities>
+								<TotalCapacity>4</TotalCapacity>
+								<SeatingCapacity>3</SeatingCapacity>
+								<WheelchairPlaceCapacity>0</WheelchairPlaceCapacity>
+								<BicycleRackCapacity>0</BicycleRackCapacity>
+							</ExpectedDepartureCapacities>
+						</EstimatedCall>
+						<EstimatedCall>
+							<!-- 
+							StopPointRef, mandatory [for PoC we'll refer to a 
+							StopPoint that doesn't exist in NSR or anywhere else]
+							-->
+							<StopPointRef>NSR:Quay:26111</StopPointRef>
+							
+							<!-- Order, optional -->
+							<Order>2</Order>
+							
+							<!-- StopPointName, optional. -->
+							<StopPointName>Passenger pickup</StopPointName>
+							
+							<!-- CallPropertyGroup -->
+							<DestinationDisplay>To passenger drop off</DestinationDisplay>
+							
+							<!-- OnwardsCallGroup, MonitoredStopDepartureStatusGroup -->
+							<DepartureStopAssignment>
+								<ExpectedFlexibleArea>
+									<gml:Polygon gml:id="passenger_pickup" gml:srsName="EPSG:4326">
+										<gml:exterior>
+											<gml:LinearRing>
+												<gml:posList>
+													10.813701152801514 59.90490269568961
+													10.813824534416199 59.905002222436366
+													10.818298459053041 59.90387782183805
+													10.818470120429994 59.90393162177695
+													10.81859886646271 59.903902031821346
+													10.818480849266054 59.903821331808345
+													10.818260908126833 59.903805191782205
+													10.813701152801514 59.90490269568961
+												</gml:posList>
+											</gml:LinearRing>
+										</gml:exterior>
+									</gml:Polygon>
+								</ExpectedFlexibleArea>
+							</DepartureStopAssignment>
+							
+							<AimedArrivalTime>2025-11-25T07:08:00+02:00</AimedArrivalTime>
+							<ExpectedArrivalTime>2025-11-25T07:08:00+02:00</ExpectedArrivalTime>
+							<AimedDepartureTime>2025-11-25T07:10:00+02:00</AimedDepartureTime>
+							<ExpectedDepartureTime>2025-11-25T07:10:00+02:00</ExpectedDepartureTime>
+							<LatestExpectedDepartureTime>2025-11-25T07:15:00+02:00</LatestExpectedDepartureTime>
+							<DepartureBoardingActivity>boarding</DepartureBoardingActivity>
+							
+							<!--
+							The trip starts, the drivers car is a normal 5 seat car, but the driver has only made 4 seats available to avoid what the driver considers to be the uncomfortable middle seat in the back.
+							
+							One seat is taken by the driver, another by the passenger that leaves two seats left in the car.
+							-->
+							<ExpectedDepartureCapacities>
+								<TotalCapacity>4</TotalCapacity>
+								<SeatingCapacity>2</SeatingCapacity>
+								<WheelchairPlaceCapacity>0</WheelchairPlaceCapacity>
+								<BicycleRackCapacity>0</BicycleRackCapacity>
+							</ExpectedDepartureCapacities>
+						</EstimatedCall>
+						<EstimatedCall>
+							<!-- 
+							StopPointRef, mandatory [for PoC we'll refer to a 
+							StopPoint that doesn't exist in NSR or anywhere else]
+							-->
+							<StopPointRef>NSR:Quay:26111</StopPointRef>
+							
+							<!-- Order, optional -->
+							<Order>3</Order>
+							
+							<!-- StopPointName, optional. -->
+							<StopPointName>Passenger drop off</StopPointName>
+							
+							<!-- CallPropertyGroup -->
+							<DestinationDisplay>Drivers work place</DestinationDisplay>
+							
+							<!-- OnwardsCallGroup, MonitoredStopDepartureStatusGroup -->
+							<DepartureStopAssignment>
+								<ExpectedFlexibleArea>
+									<gml:Polygon gml:id="passenger_drop_off" gml:srsName="EPSG:4326">
+										<gml:exterior>
+											<gml:LinearRing>
+												<gml:posList>
+													10.813701152801514 59.90490269568961
+													10.813824534416199 59.905002222436366
+													10.818298459053041 59.90387782183805
+													10.818470120429994 59.90393162177695
+													10.81859886646271 59.903902031821346
+													10.818480849266054 59.903821331808345
+													10.818260908126833 59.903805191782205
+													10.813701152801514 59.90490269568961
+												</gml:posList>
+											</gml:LinearRing>
+										</gml:exterior>
+									</gml:Polygon>
+								</ExpectedFlexibleArea>
+							</DepartureStopAssignment>
+							
+							<AimedArrivalTime>2025-11-25T12:58:00+02:00</AimedArrivalTime>
+							<ExpectedArrivalTime>2025-11-25T12:58:00+02:00</ExpectedArrivalTime>
+							<AimedDepartureTime>2025-11-25T13:00:00+02:00</AimedDepartureTime>
+							<ExpectedDepartureTime>2025-11-25T13:00:00+02:00</ExpectedDepartureTime>
+							<LatestExpectedDepartureTime>2025-11-25T13:05:00+02:00</LatestExpectedDepartureTime>
+							<DepartureBoardingActivity>alighting</DepartureBoardingActivity>
+							
+							<!--
+							The trip starts, the drivers car is a normal 5 seat car, but the driver has only made 4 seats available to avoid what the driver considers to be the uncomfortable middle seat in the back.
+							
+							One seat is taken by the driver, the passenger exits the vehicle, then there's three seats left in the car.
+							-->
+							<ExpectedDepartureCapacities>
+								<TotalCapacity>4</TotalCapacity>
+								<SeatingCapacity>3</SeatingCapacity>
+								<WheelchairPlaceCapacity>0</WheelchairPlaceCapacity>
+								<BicycleRackCapacity>0</BicycleRackCapacity>
+							</ExpectedDepartureCapacities>
+						</EstimatedCall>
+						<EstimatedCall>
+							<StopPointRef>NSR:Quay:29328</StopPointRef>
+							<Order>4</Order>
+							<StopPointName>Drivers work place</StopPointName>
+							
+							<!-- CallPropertyGroup -->
+							<DestinationDisplay>Last stop</DestinationDisplay>
+							
+							<!-- OnwardsCallGroup -->
+							<ArrivalStopAssignment>
+								<ExpectedFlexibleArea>	
+									<gml:Polygon gml:id="drivers_work" gml:srsName="EPSG:4326">
+										<gml:exterior>
+											<gml:LinearRing>
+												<gml:posList>
+													10.198048353195192 59.744999037838035
+													10.197742581367494 59.744653070138405
+												    10.197254419326784 59.74476388830704
+												    10.197045207023622 59.7446233383721
+												    10.197629928588867 59.74445846173351
+												    10.197780132293703 59.744542251602304
+												    10.197908878326418 59.74463955570244
+												    10.198810100555422 59.744396294920904
+												    10.198960304260256 59.744482787846074
+												    10.198627710342409 59.74456928054744
+												    10.19883155822754 59.74479902569844
+												    10.198048353195192 59.744999037838035
+												</gml:posList>
+											</gml:LinearRing>
+										</gml:exterior>
+									</gml:Polygon>
+								</ExpectedFlexibleArea>
+							</ArrivalStopAssignment>
+							<!--
+							Time flexibility.
+							
+							Aimed time is the plan of the driver.
+							Expected is adjusted for delays and the pickup of the passenger, since the trip hasn't started at this time, there are no delays.
+							Latest Expected is the flexibility of the driver, his willingness to extend the duration of the journey for allowing pickup of passengers.
+							-->
+							<AimedArrivalTime>2025-11-25T13:45:00+02:00</AimedArrivalTime>
+							<ExpectedArrivalTime>2025-11-25T13:51:00+02:00</ExpectedArrivalTime>
+							<LatestExpectedArrivalTime>2025-11-25T14:05:00+02:00</LatestExpectedArrivalTime>
+							<ArrivalBoardingActivity>alighting</ArrivalBoardingActivity>
+							
+							<ExpectedDepartureCapacities>
+								<TotalCapacity>4</TotalCapacity>
+								<SeatingCapacity>4</SeatingCapacity>
+								<WheelchairPlaceCapacity>0</WheelchairPlaceCapacity>
+								<BicycleRackCapacity>0</BicycleRackCapacity>
+							</ExpectedDepartureCapacities>
+						</EstimatedCall>
+					</EstimatedCalls>
+					<IsCompleteStopSequence>true</IsCompleteStopSequence>
+				</EstimatedVehicleJourney>
+			</EstimatedJourneyVersionFrame>
+		</EstimatedTimetableDelivery>
+	</ServiceDelivery>
+</Siri>
